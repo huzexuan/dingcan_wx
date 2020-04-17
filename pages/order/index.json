@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+      "tabs": "/components/tabs/index",
+      "card": "/components/card/index"
+    }
+  }

@@ -1,0 +1,75 @@
+const App = getApp()
+Page({
+    data:{
+        menu:[{
+            type:1,
+            icon:"/img/code.png",
+            name:'取餐码',
+            url:'/pages/order/operation?type=1'
+        },{
+            type:2,
+            icon:"/img/scan.png",
+            name:'扫一扫',
+            tap:'transferScan'
+        },{
+            type:1,
+            icon:"/img/examine_logo.png",
+            name:'审批晚餐',
+            url:'/pages/order/operation?type=2'
+        },{
+            type:1,
+            icon:"/img/record.png",
+            name:'核销记录',
+            url:'/pages/order/operation?type=3'
+        }]
+    },
+    onLoad(){
+        let _this = this
+        App._get('v1_0_0.user/index',{},res=>{
+            _this.setData(res.data)
+            if(res.data.auth == 1){
+                _this.setData({
+                    menu:[{
+                        type:1,
+                        icon:"/img/code.png",
+                        name:'取餐码',
+                        url:'/pages/order/operation?type=1'
+                    },{
+                        type:1,
+                        icon:"/img/record.png",
+                        name:'核销记录',
+                        url:'/pages/order/operation?type=3'
+                    }]
+                })
+            }else if(res.data.auth == 2){
+                _this.setData({
+                    menu:[{
+                        type:2,
+                        icon:"/img/scan.png",
+                        name:'扫一扫',
+                        tap:'transferScan'
+                    }]
+                })
+            }else if(res.data.auth == 3){
+                _this.setData({
+                    menu:[{
+                        type:1,
+                        icon:"/img/code.png",
+                        name:'取餐码',
+                        url:'/pages/order/operation?type=1'
+                    },{
+                        type:1,
+                        icon:"/img/examine_logo.png",
+                        name:'审批晚餐',
+                        url:'/pages/order/operation?type=2'
+                    },{
+                        type:1,
+                        icon:"/img/record.png",
+                        name:'核销记录',
+                        url:'/pages/order/operation?type=3'
+                    }]
+                })
+            }
+        })
+    }
+})

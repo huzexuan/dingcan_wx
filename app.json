@@ -1,0 +1,44 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/order/index",
+    "pages/order/operation",
+    "pages/me/index",
+    "pages/order_food/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "嘉诚餐饮",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#8A8A8B",
+    "selectedColor": "#FFAC45",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/img/home2.png",
+        "selectedIconPath": "/img/home1.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/order/index",
+        "iconPath": "/img/order2.png",
+        "selectedIconPath": "/img/order1.png",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/me/index",
+        "iconPath": "/img/me2.png",
+        "selectedIconPath": "/img/me1.png",
+        "text": "我的"
+      }
+    ],
+    "position": "bottom"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,12 @@
+<view class="pop_bg" wx:if="{{ show }}">
+    <view class="pop_box">
+        <view class="pop">
+            <view class="pop_title">
+                <view class="title">{{ title }}</view>
+                <view class="iconfont iconchahao1" bind:tap="close"></view>
+            </view>
+            <slot></slot>
+            <button hover-class="none" bind:tap="btn">{{ btn_text }}</button>
+        </view>
+    </view>
+</view>

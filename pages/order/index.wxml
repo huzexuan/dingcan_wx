@@ -1,0 +1,4 @@
+<view class="tab-bar">
+    <tabs tabs="{{['全部', '已预订','已退餐'] }}" background="#FFAC45" fontColor="#FFAC45" select="{{ selects }}" bind:change="changeSelect" />
+</view>
+<card list="{{ list }}" bind:refund_change="refund"></card>

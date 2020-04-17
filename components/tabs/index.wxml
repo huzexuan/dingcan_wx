@@ -1,0 +1,8 @@
+<scroll-view scroll-with-animation scroll-x scroll-left="{{scroll_left}}" class="x-tabs" style="{{fixed ? 'position: fixed; top: '+offsetTop+'px;' : ''}}">
+  <view style="display: flex; position: relative;">
+    <view class="x-tabs-line" style="width: {{line_width}}px; transform: translateX({{line_translateX}}px); background: {{background}};"></view>
+    <view class="x-tab" style="{{select === (index + 1) ? 'color: ' + fontColor + '; font-size:24rpx; ' : 'color: ' + defaultColor + ';'}}" wx:for="{{tabs}}" wx:key="index" bind:tap="changeChoose" data-idx="{{index + 1}}">
+      {{item}}
+    </view>
+  </view>
+</scroll-view>

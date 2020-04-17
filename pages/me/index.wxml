@@ -1,0 +1,31 @@
+<view class="bar" >
+    <view class="pageName">我的</view>
+    <view class="user">
+        <view  class="app-img">
+            <open-data type="userAvatarUrl"></open-data>
+        </view>
+        <view class="user_del">
+            <view class="user_name">{{ name }}</view>
+            <view class="user_department">{{class_name}}</view>
+        </view>
+    </view>
+</view>
+<view class="menu_box">
+    <block wx:for="{{ menu }}" wx:key="item">
+        <view class="menu_item" wx:if="{{ item.type == 2}}" bind:tap="{{ item.tap }}">
+            <image class="menu_icon" src="{{ item.icon }}"></image>
+        <view class="menu_name" style="{{ index == menu.length -1 ?'':'border-bottom:0.5rpx solid #F7F7F7;' }}">
+                <view class="name">{{ item.name }}</view>
+                <view class="iconfont iconxiangyoujiantou"></view>
+            </view>
+          </view>
+          <navigator wx:else class="menu_item"  hover-class='none' url="{{ item.url }}">
+            <image class="menu_icon" src="{{ item.icon }}"></image>
+            <view class="menu_name" style="{{ index == menu.length -1 ?'':'border-bottom:0.5rpx solid #F7F7F7;' }}">
+                <view class="name">{{ item.name }}</view>
+                <view class="iconfont iconxiangyoujiantou"></view>
+            </view>
+          </navigator>
+    </block>
+    
+</view>

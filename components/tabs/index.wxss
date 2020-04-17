@@ -1,0 +1,22 @@
+.x-tabs {
+    position: relative;
+    line-height: 54rpx;
+}
+
+.x-tabs-line {
+    height: 2rpx;
+    transition: transform .3s;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.x-tab {
+    margin: 0 auto;
+    font-size: 24rpx;
+    color: #4F4F4F;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

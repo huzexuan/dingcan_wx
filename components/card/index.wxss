@@ -1,0 +1,78 @@
+.order_card{
+    width: 688rpx;
+    margin:16rpx auto 0 auto;
+    background: #fff;
+    overflow: hidden;
+    border-radius: 8rpx;
+}
+.order{
+    padding: 0 14rpx 0 38rpx;
+    position: relative;
+    border-bottom: 0.5rpx dashed #DCDCDC;
+}
+.kind{
+    width: 110rpx;
+    height: 52rpx;
+    text-align: center;
+    line-height: 52rpx;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 24rpx;
+}
+.order_determined{
+    padding: 28rpx 0;
+    border-bottom: 0.5rpx solid #F5F5F5;
+}
+.order_time{
+    font-size: 24rpx;
+    color: #7D7D7D;
+}
+.order_del{
+    margin: 32rpx 0;
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    position: relative;
+}
+.item_name>view:nth-child(2),.order_num>view:nth-child(2){
+    margin: 32rpx 0;
+}
+.item_name{
+    margin-right: 32rpx;
+    color: #C6C6C6;
+}
+.order_num{
+    color: #7D7D7D;
+}
+.order_num>view:last-child{
+    color: #FE3D51;
+    font-size: 32rpx;
+    font-weight: bold;
+}
+.type_img{
+    width: 194rpx;
+    height: 156rpx;
+    position: absolute;
+    top: 15rpx;
+    right: 26rpx;
+}
+.order_operation{
+    /* height: 88rpx; */
+    padding: 14rpx 24rpx ;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.operation{
+    width: 140rpx;
+    height: 56rpx;
+    box-sizing: border-box;
+    border-radius: 4rpx;
+    border:  0.5rpx solid #FF413C;
+    color: #FE3D51;
+    font-size: 24rpx;
+    text-align: center;
+    line-height: 56rpx;
+}

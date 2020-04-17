@@ -1,0 +1,51 @@
+<wxs module="order_typeImg">
+    function order_typeImg(res) {
+      switch (res) {
+        case '1':
+          return '/img/examine.png';
+        case '2':
+          return '/img/pass.png';
+        case '3':
+          return '/img/not_pass.png';
+        case '4':
+          return '/img/refund.png';
+      }
+    }
+    module.exports.order_typeImg = order_typeImg
+  </wxs>
+  <wxs module="bg_color">
+    function bg_color(res) {
+        console.log(res)
+      switch (res) {
+        case '0':
+          return '#FFAC45';
+        case '4':
+          return '#AAAAAA';
+      }
+    }
+    module.exports.bg_color = bg_color
+  </wxs>
+<view class="order_card" wx:for="{{ list }}" wx:key='this'>
+    <view class="order">
+    <view class="kind" style="background: {{bg_color.bg_color(item.order_type_status)}}">{{ item.order_type == 1?'午餐':'晚餐'}}</view>
+        <view class="order_determined">
+            <view class="order_time">{{ item.create_time }}</view>
+        </view>
+        <view class="order_del">
+            <view class="item_name">
+                <view>名称：</view>
+                <view>数量：</view>
+                <view>已付款：</view>
+            </view>
+            <view class="order_num">
+                <view>{{item.order_type == 1 ?item.lunch:item.dinner}}</view>
+                <view>x{{ item.food_num }}</view>
+                <view>¥{{ item.fee }}</view>
+            </view>
+            <image class="type_img" wx:if="{{ item.order_type_status != 0}}" src="{{order_typeImg.order_typeImg(item.order_type_status)}}"></image>
+        </view>
+    </view>
+    <view class="order_operation" >
+        <view class="operation" wx:if="{{ item.take_maels_status == 1 && item.order_type_status != 4}}" bind:tap="refund" data-order_num="{{ item.order_num }}">退餐</view>
+    </view>
+</view>

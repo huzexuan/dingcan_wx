@@ -1,0 +1,74 @@
+.bar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    height: 324rpx;
+    background:linear-gradient(131deg,rgba(255,186,74,1) 0%,rgba(255,104,0,1) 100%);
+}
+.pageName{
+    margin-top: 72rpx;
+    text-align: center;
+    line-height: 1;
+    font-size: 28rpx;
+    color: #FFFFFF;
+}
+.user{
+    margin: 46rpx 0 0 54rpx;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.app-img{
+    width: 108rpx;
+    height: 108rpx;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.user_del{
+    margin-left: 26rpx;
+}
+.user_name{
+    font-size:32rpx ;
+    color: #FFFFFF;
+    font-weight: 500;
+    margin-bottom: 12rpx;
+    line-height: 1;
+}
+.user_department{
+    font-size: 26rpx;
+    color:#ffd4a7;
+    line-height: 1;
+}
+.menu_box{
+    margin-top: 324rpx;
+    padding: 0 36rpx;
+}
+.menu_item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.menu_icon{
+    width: 48rpx;
+    height: 48rpx;
+    display: block;
+}
+.menu_name{
+    width: 600rpx;
+    padding: 40rpx 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.name{
+    font-size: 28rpx ;
+    color: #343434;
+    font-weight:400;
+}
+.iconxiangyoujiantou{
+    font-size: 20rpx;
+    color: #cacaca;
+}
