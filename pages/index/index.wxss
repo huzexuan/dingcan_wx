@@ -119,11 +119,15 @@ input{
   border-radius: 50%;
   border: solid .5rpx #E1E1E1;
   margin-right: 10rpx;
+  position: relative;
 }
 .ethnic_checkout{
-  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -6rpx;
+  margin-top: -6rpx;
   width: 12rpx;
   height: 12rpx;
-  margin-top: 4rpx;
   border-radius: 50%;
 }

@@ -1,0 +1,5 @@
+<pop-up show="{{ pop_show && type == 1}}" title="取餐二维码" btn_text="取餐完成" bind:change="takeFood">
+    <view class="take_title">请向送餐员出示此二维码</view>
+    <image class="take_code" src="{{img_src}}"></image>
+</pop-up>
+<card list="{{ list }}" bind:no_examine_chenge="no_examine" bind:examine_chenge="examine" bind:take_chenge="take"  card_type_examine="{{ type == 2?true:false }}" card_type_distribution="{{ type == 3?true:false }}" card_type_take="{{ type == 1 ?true:false }}" no_more="{{no_more}}"></card>

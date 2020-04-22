@@ -4,6 +4,7 @@
     "pages/order/index",
     "pages/order/operation",
     "pages/me/index",
+    "pages/me/courier",
     "pages/order_food/index"
   ],
   "window":{

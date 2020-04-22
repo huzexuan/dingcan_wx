@@ -9,6 +9,7 @@
     top: 0;
     left: 0;
     background: rgba(0, 0, 0, 0.8);
+    z-index: 111;
 }
 .pop_box{
     position: relative;
@@ -52,4 +53,20 @@ button{
     background:rgba(255,172,69,1);
     margin-top: 24rpx;
     font-weight: normal;
+}
+
+
+
+.areas{
+    width: 498rpx;
+    height: 114rpx;
+    box-sizing: border-box;
+    padding: 14rpx 12rpx;
+    margin:78rpx auto 58rpx auto;
+    border:1px solid rgba(247,247,247,1);
+    border-radius:8px;
+    font-size: 24rpx;
+}
+.areas_placeholder{
+    color: #CDCDCD !important;
 }

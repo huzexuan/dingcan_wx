@@ -56,7 +56,15 @@
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/me/courier",
+					"pathName": "pages/me/courier",
+					"query": "",
+					"scene": 1011
+				}
+			]
 		}
 	}
 }

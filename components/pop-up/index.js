@@ -11,6 +11,10 @@ Component({
         show:{
             type:Boolean,
             value:false
+        },
+        textarea:{
+            type:Boolean,
+            value:false
         }
     },
     data: {
@@ -24,6 +28,9 @@ Component({
         },
         btn(){
             this.triggerEvent('change');
+        },
+        areas(e){
+            this.triggerEvent('areas',e)
         }
     }
 })

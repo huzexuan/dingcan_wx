@@ -22,6 +22,7 @@ App({
     this.setApiRoot();
     // 小程序主动更新
     this.updateManager();
+    console.log('.')
   },
   /**
    * 当小程序启动，或从后台进入前台显示，会触发 onShow
@@ -32,6 +33,7 @@ App({
       num: 0
     }
     wx.setStorageSync('isimp', isimpobj)
+    
   },
   onHide: function () {
     let _this = this
@@ -120,8 +122,8 @@ App({
     let App = this;
     // 构造请求参数
     data = data || {};
-    data.user_token=wx.getStorageSync('user_token')
-    data.user_id=wx.getStorageSync('user_id')
+    wx.getStorageSync('user_token') ? data.user_token=wx.getStorageSync('user_token'):''
+    wx.getStorageSync('user_id') ?data.user_id=wx.getStorageSync('user_id'):''
     // 构造get请求
       wx.request({
         url: App.api_root + url,
@@ -130,13 +132,13 @@ App({
         },
         data: data,
         success: function (res) {
+          wx.hideLoading()
           success && success(res.data);
         },
         fail: function () {
           App.showError('网络繁忙，请重试');
         },
         complete: function () {
-          wx.hideLoading();
         },
       });
   },
@@ -145,15 +147,8 @@ App({
    */
   _post_form: function (url, data, success, fail, complete) {
     let App = this;
-    data.wxapp_id = App.siteInfo.uniacid;
-    data.applets = App.siteInfo.applets;
-
-    data.token = wx.getStorageSync('token');
-    data.applets = App.siteInfo.applets;
-    wx.showLoading({
-      title: '加载中...',
-      mask: true
-    });
+    wx.getStorageSync('user_token') ? data.user_token=wx.getStorageSync('user_token'):''
+    wx.getStorageSync('user_id') ?data.user_id=wx.getStorageSync('user_id'):''
     wx.request({
       url: App.api_root + url,
       header: {
@@ -162,20 +157,6 @@ App({
       method: 'POST',
       data: data,
       success: function (res) {
-        if (res.statusCode !== 200 || typeof res.data !== 'object') {
-          App.showError('网络请求出错');
-          return false;
-        }
-        if (res.data.code === -1) {
-          // 登录态失效, 重新登录
-          wx.hideLoading();
-          return false;
-        } else if (res.data.code === 0) {
-          App.showError(res.data.msg, function () {
-            fail && fail(res);
-          });
-          return false;
-        }
         success && success(res.data);
       },
       fail: function (res) {
@@ -184,7 +165,6 @@ App({
         });
       },
       complete: function (res) {
-        wx.hideLoading();
         complete && complete(res);
       }
     });
@@ -218,7 +198,6 @@ App({
     const updateManager = wx.getUpdateManager();
     updateManager.onCheckForUpdate(function (res) {
       // 请求完新版本信息的回调
-      console.log(res.hasUpdate)
     });
     updateManager.onUpdateReady(function () {
       wx.showModal({
@@ -241,5 +220,14 @@ App({
         showCancel: false
       })
     });
+  },
+  up_courierPage(){
+      this._get('v1_0_0.user/index',{},res=>{
+      if(res.data.auth == 2){
+        wx.redirectTo({
+          url: '/pages/me/courier',
+        })
+      }
+    })
   }
 });

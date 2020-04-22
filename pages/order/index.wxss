@@ -4,3 +4,8 @@ page{
 .tab-bar {
     background: white;
   }
+.tab_zoom{
+    width: 100%;
+    height: 54rpx;
+    background: #fff;
+}

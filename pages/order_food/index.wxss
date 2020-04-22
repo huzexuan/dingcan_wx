@@ -21,7 +21,7 @@
 }
 .at_food{
     width: 602rpx;
-    height: 148rpx;
+    padding: 36rpx 10rpx;
     margin: auto;
     background:linear-gradient(131deg,rgba(255,186,74,1) 0%,rgba(255,104,0,1) 100%);
     border-radius: 14rpx;
@@ -30,61 +30,68 @@
 .at_food>view:nth-child(1){
     color: #ffdec4;
     font-size: 20rpx;
-    padding: 36rpx 0 20rpx 0;
+    padding-bottom:20rpx;
 }
 .at_food>view:nth-child(2){
     color: #fff;
     font-size: 36rpx;
     font-weight: 500;
 }
-.table{
+.table {
     padding: 0 60rpx;
-}
-.table_tr{
+  }
+  .tr{
     display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
     align-items: center;
-    padding-bottom: 12rpx;
-    text-align: center;
-    font-size: 24rpx;
+    border: 1px solid #EDEDED;
+    border-bottom: 0;
+  }
+  .tr:nth-child(1){
+      border: 0;
+  }
+  .tr:last-child{
+    border-bottom: 1px solid #EDEDED;
+    }
+  .td {
+      width:40%;
+      box-sizing: border-box;
+      justify-content: center;
+      line-height: 1;
+      text-align: center;
+      font-size: 24rpx;
+      color:#B4B4B4;
+      border-left: 1px solid #EDEDED;
+      height: 116rpx;
+    padding: 10rpx;
+  }
+  .tr>.td:nth-child(1){
+    width: 20%;
     color: #202020;
     font-weight: 500;
+    border: 0;
+    line-height: 96rpx;
 }
-.table_tr>view:nth-child(1),.table_tb>view:nth-child(1){
-    width: 124rpx;
-    box-sizing: border-box;
+.tr>.th:nth-child(1){
+    width: 20%;
 }
-.table_tr>view:nth-child(2),.table_tb>view:nth-child(2),.table_tr>view:nth-child(3),.table_tb>view:nth-child(3){
-    width: 254rpx;
-    box-sizing: border-box;
-}
-.table_tb{
+  .th {
+    width: 40%;
+    height: 100%;
+    justify-content: center;
+    padding-bottom: 24rpx;
+    background: #fff;
+    color: #202020;
+    font-weight:500;
+    font-size: 24rpx;
     display: flex;
     align-items: center;
-    font-size: 24rpx;
-    color: #B4B4B4;
-    font-weight: 500;
-    border-top: solid 0.5rpx #EDEDED;
-}
-.table_tb:last-child{
-    border-bottom: solid 0.5rpx #EDEDED;
-}
-.table_tb>view{
-    height: 82rpx;
-    line-height: 1;
-    border-right: solid 0.5rpx #EDEDED;
-}
-.table_tb>view:nth-child(1){
-    padding: 0;
-    color: #202020;
-    font-weight: 500;
-    text-align: center;
-    line-height: 82rpx;
-    border-left: solid 0.5rpx #EDEDED;
-
-}
-.at_table>view{
-    color: #FF7731 !important;
-}
+  }
+  .line>.td>view{
+    overflow: hidden;
+  }
 .shop{
     width: 656rpx;
     height: 74rpx;
@@ -156,21 +163,22 @@
     font-weight: bold;
 }
 .name{
+    width: 70%;
     color: #FF7F34;
 }
 .pice{
     color: #FE3D51;
 }
-.areas{
-    width: 498rpx;
-    height: 114rpx;
-    box-sizing: border-box;
-    padding: 14rpx 12rpx;
-    margin:78rpx auto 58rpx auto;
-    border:1px solid rgba(247,247,247,1);
-    border-radius:8px;
-    font-size: 24rpx;
+.is_selected .td{
+    color:#FF7731 !important ;
 }
-.areas_placeholder{
-    color: #CDCDCD !important;
+.food{
+    line-height: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+}
+.text_lunchline,.text_dinnerline{
+    line-height: 96rpx;
 }

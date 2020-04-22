@@ -1,6 +1,9 @@
 .x-tabs {
-    position: relative;
+    /* position: relative; */
     line-height: 54rpx;
+    background: #fff;
+    z-index: 222;
+    position: fixed;
 }
 
 .x-tabs-line {

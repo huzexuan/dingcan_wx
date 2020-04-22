@@ -1,19 +1,24 @@
-const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
-
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-}
-
-const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : '0' + n
-}
-
+/**
+ * 工具类
+ */
 module.exports = {
-  formatTime: formatTime
-}
+  /**
+   * 对象转URL
+   */
+  urlEncode(urlStr) {
+    if (typeof urlStr == "undefined") {
+             var url = decodeURI(location.search); 
+       } else {
+           var url = "?" + urlStr.split("?")[1];
+    }
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+         var str = url.substr(1);
+         var strs = str.split("&");
+        for (var i = 0; i < strs.length; i++) {
+             theRequest[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1]);
+         }
+     }
+     return theRequest;
+ }
+};

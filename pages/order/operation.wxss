@@ -1,0 +1,20 @@
+page{
+    background: #f8f8f8;
+}
+.take_title{
+    text-align: center;
+    margin: 52rpx 0 46rpx 0;
+    font-size: 28rpx;
+    color: #FE3D51;
+    font-weight: 500;
+}
+.take_code{
+    width: 328rpx;
+    height: 328rpx;
+    display: block;
+    margin: 0 auto 36rpx;
+}
+.canvas{
+    width: 328rpx;
+    height: 328rpx; 
+}

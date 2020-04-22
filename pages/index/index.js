@@ -40,23 +40,16 @@ Page({
   // 弹框
   register_pop(){
     let _this = this
-    _this.setData({
-      pop_show:true
-    })
-    //获取所有公司
-    App._get('v1_0_0.register/get_company_list',{},res=>{
-      _this.setData({
-        company:res.data.list
-      })
-    })
-     // 微信Code获取
-     wx.login({
-      success: res => {
         _this.setData({
-          wxCode:res.code
+          pop_show:true
         })
-      }
-    })
+        //获取所有公司
+        App._get('v1_0_0.register/get_company_list',{},res=>{
+          _this.setData({
+            company:res.data.list
+          })
+        })
+    
   },
   onShow(){
     let _this = this
@@ -64,11 +57,39 @@ Page({
       user_id:wx.getStorageSync('user_id'),
       user_token:wx.getStorageSync('user_token')
     })
+    App.up_courierPage()
+    // 微信Code获取
+    wx.login({
+      success: res => {
+        _this.setData({
+          wxCode:res.code
+        },()=>{
+          App._get('v1_0_0.register/is_login',{code:_this.data.wxCode},res=>{
+            if(res.code == 200){
+              _this.setData({
+                pop_show:false,
+                user_id:res.data.user_id,
+                user_token:res.data.user_token,
+              })
+              wx.setStorageSync('user_id',res.data.user_id)
+              wx.setStorageSync('user_token',res.data.user_token)
+            }else {
+              wx.removeStorageSync('user_id')
+              wx.removeStorageSync('user_token')
+              _this.setData({
+                openid:res.data.openid
+              })
+            }
+          })
+        })
+      }
+    })
+    
   },
   //注册
   register(){
     let _this = this
-    const {user_Name,user_Phone,company_id,section_id,ethnicOutid,wxCode}=_this.data
+    const {user_Name,user_Phone,company_id,section_id,ethnicOutid,openid}=_this.data
     if(user_Name == '' || !user_Name){
       App.popToast('姓名不能为空')
       return
@@ -88,12 +109,12 @@ Page({
       return
     }
     App._get('v1_0_0.register/do_register',{
-      code:wxCode,
       name:user_Name,
       phone:user_Phone,
       company_id,
       class_id:section_id,
-      nation:ethnicOutid
+      nation:ethnicOutid,
+      openid
     },res=>{
       if(res.code == 200){
         App.showSuccess(res.msg,()=>{

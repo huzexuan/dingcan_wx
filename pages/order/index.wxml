@@ -1,4 +1,5 @@
 <view class="tab-bar">
-    <tabs tabs="{{['全部', '已预订','已退餐'] }}" background="#FFAC45" fontColor="#FFAC45" select="{{ selects }}" bind:change="changeSelect" />
+    <tabs tabs="{{['全部', '已预订','已退餐'] }}" no_more="{{ no_more }}" background="#FFAC45" fontColor="#FFAC45" select="{{ selects }}" bind:change="changeSelect" />
 </view>
-<card list="{{ list }}" bind:refund_change="refund"></card>
+<view class="tab_zoom"></view>
+<card list="{{ list }}" no_more="{{ no_more }}"  bind:refund_change="refund"></card>

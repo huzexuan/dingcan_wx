@@ -6,6 +6,7 @@
                 <view class="iconfont iconchahao1" bind:tap="close"></view>
             </view>
             <slot></slot>
+            <textarea class="areas" wx:if="{{textarea}}" placeholder='输入您的备注信息' placeholder-class="areas_placeholder"  bindinput="areas" /> 
             <button hover-class="none" bind:tap="btn">{{ btn_text }}</button>
         </view>
     </view>

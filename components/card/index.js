@@ -2,6 +2,22 @@ Component({
     properties: {
         list:{
             type:Array
+        },
+        card_type_examine:{
+            type:Boolean,
+            value:false
+        },
+        card_type_take:{
+            type:Boolean,
+            value:false
+        },
+        no_more:{
+            type:Boolean,
+            value:false
+        },
+        card_type_distribution:{
+            type:Boolean,
+            value:false
         }
     },
     data: {
@@ -9,6 +25,15 @@ Component({
     methods: {
         refund(e){
             this.triggerEvent('refund_change',e);
+        },
+        examine(e){
+            this.triggerEvent('examine_chenge',e)
+        },
+        no_examine(e){
+            this.triggerEvent('no_examine_chenge',e)
+        },
+        take(e){
+            this.triggerEvent('take_chenge',e)
         }
     }
 })

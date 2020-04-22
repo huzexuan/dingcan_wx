@@ -1,1 +1,6 @@
-{}
+{
+    "usingComponents": {
+        "pop-up": "/components/pop-up/index",
+        "card": "/components/card/index"
+    }
+}
