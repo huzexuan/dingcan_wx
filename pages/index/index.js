@@ -5,6 +5,7 @@ const App = getApp()
 Page({
     data: {
         // banner
+        banner: ["/img/banner1.jpg", "/img/banner2.jpg"],
         indicatorDots: true,
         autoplay: true,
         interval: 5000,
@@ -37,9 +38,9 @@ Page({
     },
     onLoad() {
         let _this = this
-        App._get('v1_0_0.home/index', {}, res => {
-            _this.setData(res.data)
-        })
+            // App._get('v1_0_0.home/index', {}, res => {
+            //     _this.setData(res.data)
+            // })
     },
     // 弹框
     register_pop() {
@@ -56,38 +57,38 @@ Page({
 
     },
     onShow() {
-        let _this = this
-        _this.setData({
-            user_id: wx.getStorageSync('user_id'),
-            user_token: wx.getStorageSync('user_token')
-        })
-        App.up_courierPage()
-            // 微信Code获取
-        wx.login({
-            success: res => {
-                _this.setData({
-                    wxCode: res.code
-                }, () => {
-                    App._get('v1_0_0.register/is_login', { code: _this.data.wxCode }, res => {
-                        if (res.code == 200) {
-                            _this.setData({
-                                pop_show: false,
-                                user_id: res.data.user_id,
-                                user_token: res.data.user_token,
-                            })
-                            wx.setStorageSync('user_id', res.data.user_id)
-                            wx.setStorageSync('user_token', res.data.user_token)
-                        } else {
-                            wx.removeStorageSync('user_id')
-                            wx.removeStorageSync('user_token')
-                            _this.setData({
-                                openid: res.data.openid
-                            })
-                        }
-                    })
-                })
-            }
-        })
+        // let _this = this
+        // _this.setData({
+        //     user_id: wx.getStorageSync('user_id'),
+        //     user_token: wx.getStorageSync('user_token')
+        // })
+        // App.up_courierPage()
+        //     // 微信Code获取
+        // wx.login({
+        //     success: res => {
+        //         _this.setData({
+        //             wxCode: res.code
+        //         }, () => {
+        //             App._get('v1_0_0.register/is_login', { code: _this.data.wxCode }, res => {
+        //                 if (res.code == 200) {
+        //                     _this.setData({
+        //                         pop_show: false,
+        //                         user_id: res.data.user_id,
+        //                         user_token: res.data.user_token,
+        //                     })
+        //                     wx.setStorageSync('user_id', res.data.user_id)
+        //                     wx.setStorageSync('user_token', res.data.user_token)
+        //                 } else {
+        //                     wx.removeStorageSync('user_id')
+        //                     wx.removeStorageSync('user_token')
+        //                     _this.setData({
+        //                         openid: res.data.openid
+        //                     })
+        //                 }
+        //             })
+        //         })
+        //     }
+        // })
 
     },
     //注册

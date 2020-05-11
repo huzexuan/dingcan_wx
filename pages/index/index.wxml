@@ -11,3 +11,89 @@
         <image src="{{ item.icon }}" /> {{item.title}}
     </view>
 </view>
+<swiper class="banner" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color='#DDDDDD' indicator-active-color='#333333' circular='{{circular}}'>
+    <swiper-item wx:for="{{banner}}" wx:key='item'>
+        <image src="{{item}}" class="slide-image" />
+    </swiper-item>
+</swiper>
+<view class="bottom_view">
+    <!--通知-->
+    <view class="tongzhi">
+        <image src="/img/v2_q9upl5.png" class="tz_img"></image>
+        <text>特殊时期推出拼团优惠福利!</text>
+    </view>
+    <!--通知_end-->
+
+    <!--新人首单 会员专享-->
+    <view class="tab_2">
+        <view class="tab_2_item">
+            <view class="tab_2item_content">
+                <view class="tab2item_content">
+                    <text>新人首单</text>
+                    <text>特价专区</text>
+                    <text class="tab2item_btn">GO＞</text>
+                </view>
+                <view class="tab2item_img">
+                    <image src="/img/tab1.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="tab_2_item tab2item-r">
+            <view class="tab_2item_content">
+                <view class="tab2item_content">
+                    <text>会员专享</text>
+                    <text>优惠特区</text>
+                    <text class="tab2item_btn tab1item_btn-r">GO＞</text>
+                </view>
+                <view class="tab2item_img">
+                    <image src="/img/tab2.png"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!--新人首单 会员专享_end-->
+
+    <!--秒杀-->
+    <view class="miaosha">
+        <view class="miaosha_item">
+            <view class="ms-item">
+                <text class="ms-item-tit">限时秒杀</text>
+                <text class="ms-item-endtime">距本场结束</text>
+                <image src="/img/ms1.jpg"></image>
+            </view>
+            <view class="ms-item">
+                <text class="ms-item-tit">超值套餐</text>
+                <text class="ms-item-content">低至9.9元</text>
+                <image src="/img/ms2.jpg"></image>
+            </view>
+        </view>
+    </view>
+    <!--秒杀_end-->
+
+    <view class="jg_view"></view>
+    <!--间隔-->
+
+    <!--营养搭配-->
+    <view class="dapei">
+        <view class="dapei_s">
+            <text>营养搭配味道鲜</text>
+            <view class="dapei-content">
+                <view class="dapei-item">
+                    <image src="/img/b1.jpg"></image>
+                    <text>面食</text>
+                </view>
+                <view class="dapei-item">
+                    <image src="/img/b2.jpg"></image>
+                    <text>焖锅</text>
+                </view>
+                <view class="dapei-item">
+                    <image src="/img/b3.jpg"></image>
+                    <text>米饭</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!--营养搭配_end-->
+    <view class="jg_view2"></view>
+    <!--间隔-->
+</view>
