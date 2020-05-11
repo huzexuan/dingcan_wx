@@ -1,79 +1,102 @@
 <view class="banner">
-  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color='rgba(255, 255,255, .3)' indicator-active-color='#fff' circular='{{circular}}' style='height:450rpx'>
-    <swiper-item wx:for="{{banner}}" wx:key='item'>
-        <image src="{{item.img_url}}" class="slide-image" />
-    </swiper-item>
-  </swiper>
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color='rgba(255, 255,255, .3)' indicator-active-color='#fff' circular='{{circular}}' style='height:450rpx'>
+        <swiper-item wx:for="{{banner}}" wx:key='item'>
+            <image src="{{item.img_url}}" class="slide-image" />
+        </swiper-item>
+    </swiper>
 </view>
-<view class="tab_box">
-  <block  wx:if="{{ user_token && user_id}}">
-    <navigator class="item" wx:for="{{ tab }}" wx:key='item' url="{{ item.url }}" hover-class='none' >
-      <image class="tab_img" src="{{ item.icon }}"></image>
-      <view class="tab_tit">{{ item.title }}</view>
+<block wx:if="{{ user_token && user_id}}">
+    <navigator class="order_box" url="/pages/order_food/index?type=1" hover-class='none'>
+        <image src="/img/order_img.png" class="order_img" />
+        <view class="order_text">
+            <view>开始点餐</view>
+            <view>Order Now</view>
+        </view>
     </navigator>
-  </block>
-  <block wx:else>
-    <view class="item" wx:for="{{ tab }}" wx:key='item' bind:tap="register_pop">
-      <image class="tab_img" src="{{ item.icon }}"></image>
-      <view class="tab_tit">{{ item.title }}</view>
-    </view>
-  </block>
-</view>
-<block wx:for="{{ desc }}" wx:key="item">
-  <image class="del_img" src="{{ item.img_url}}" style="{{ index == 0?'margin-bottom: 8rpx;':'margin-bottom: 14rpx;' }}"></image>
 </block>
+<block wx:else>
+    <view class="order_box" bind:tap="register_pop">
+        <image src="/img/order_img.png" class="order_img" />
+        <view class="order_text">
+            <view>开始点餐</view>
+            <view>Order Now</view>
+        </view>
+    </view>
+</block>
+<view class="del">
+    <view class="del_item">
+        <image class="del_img" src="" />
+        <view class="del_title">采购</view>
+    </view>
+    <view class="del_item">
+        <image class="del_img" src="" />
+        <view class="del_title">采购</view>
+    </view>
+    <view class="del_item">
+        <image class="del_img" src="" />
+        <view class="del_title">采购</view>
+    </view>
+    <view class="del_item">
+        <image class="del_img" src="" />
+        <view class="del_title">采购</view>
+    </view>
+    <view class="del_item">
+        <image class="del_img" src="" />
+        <view class="del_title">采购</view>
+    </view>
+</view>
 <view class="relation">
-  <text class="iconfont icondianhua"></text>
-  <text class="phone">服务电话：</text>
-  <text class="phone_num" bind:tap="Tap_phone">{{phone}}</text>
+    <text class="iconfont icondianhua"></text>
+    <text class="phone">服务电话：</text>
+    <text class="phone_num" bind:tap="Tap_phone">{{phone}}</text>
 </view>
 <pop-up show="{{ pop_show }}" bind:change="register">
-  <view class="del_box">
-    <view class="register_item">
-      <view class="name">姓名</view>
-      <view class="input">
-        <input type="text" maxlength="6" placeholder="请输入您的姓名" bindinput='blurname' placeholder-class="inp_pla"/>
-      </view>
-    </view>
-    <view class="register_item">
-      <view class="name">电话</view>
-      <view class="input">
-        <input type="number" placeholder="请输入您的电话" bindinput='blurPhone'  maxlength="11" placeholder-class="inp_pla"/>
-      </view>
-    </view>
-    <view class="register_item">
-      <view class="name">公司</view>
-      <view class="last_i">
-        <picker bindchange="company_bindPickerChange" placeholder="请选择" value="{{index}}" range="{{company}}" range-key="name">
-          <text class="picker" wx:if="{{ company_text }}">{{company_text}}</text>
-          <text wx:else class="section">请选择</text>
-          <text class="iconfont iconxiangxiajiantoushixin"></text>
-        </picker>
-      </view>
-    </view>
-    <view class="register_item">
-      <view class="name">部门</view>
-      <view class="last_i">
-        <picker wx:if="{{ section.length }}" bindchange="section_bindPickerChange" placeholder="请选择" value="{{index}}" range="{{section}}" range-key="name">
-          <text class="picker" wx:if="{{ section_text }}">{{section_text}}</text>
-          <text wx:else class="section">请选择</text>
-          <text class="iconfont iconxiangxiajiantoushixin"></text>
-        </picker>
-        <view wx:else bind:tap="has_section">
-          <text  class="section">请选择</text>
-          <text class="iconfont iconxiangxiajiantoushixin"></text>
+    <view class="del_box">
+        <view class="register_item">
+            <view class="name">姓名</view>
+            <view class="input">
+                <input type="text" maxlength="6" placeholder="请输入您的姓名" bindinput='blurname' placeholder-class="inp_pla" />
+            </view>
         </view>
-      </view>
-    </view>
-    <view class="register_item">
-      <view class="name">民族</view>
-      <view class="last_i">
-        <view class="ethnic" wx:for="{{ ethnic }}" wx:key="this" bind:tap="ethnic" id="{{ item.id }}">
-          <view class="ethnic_check">
-            <view class="ethnic_checkout" style="{{ ethnicOutid == item.id ?'background: #FFAC45;':''}}"></view>
-          </view><text>{{ item.name }}</text>
+        <view class="register_item">
+            <view class="name">电话</view>
+            <view class="input">
+                <input type="number" placeholder="请输入您的电话" bindinput='blurPhone' maxlength="11" placeholder-class="inp_pla" />
+            </view>
         </view>
-      </view>
+        <view class="register_item">
+            <view class="name">公司</view>
+            <view class="last_i">
+                <picker bindchange="company_bindPickerChange" placeholder="请选择" value="{{index}}" range="{{company}}" range-key="name">
+                    <text class="picker" wx:if="{{ company_text }}">{{company_text}}</text>
+                    <text wx:else class="section">请选择</text>
+                    <text class="iconfont iconxiangxiajiantoushixin"></text>
+                </picker>
+            </view>
+        </view>
+        <view class="register_item">
+            <view class="name">部门</view>
+            <view class="last_i">
+                <picker wx:if="{{ section.length }}" bindchange="section_bindPickerChange" placeholder="请选择" value="{{index}}" range="{{section}}" range-key="name">
+                    <text class="picker" wx:if="{{ section_text }}">{{section_text}}</text>
+                    <text wx:else class="section">请选择</text>
+                    <text class="iconfont iconxiangxiajiantoushixin"></text>
+                </picker>
+                <view wx:else bind:tap="has_section">
+                    <text class="section">请选择</text>
+                    <text class="iconfont iconxiangxiajiantoushixin"></text>
+                </view>
+            </view>
+        </view>
+        <view class="register_item">
+            <view class="name">民族</view>
+            <view class="last_i">
+                <view class="ethnic" wx:for="{{ ethnic }}" wx:key="this" bind:tap="ethnic" id="{{ item.id }}">
+                    <view class="ethnic_check">
+                        <view class="ethnic_checkout" style="{{ ethnicOutid == item.id ?'background: #FFAC45;':''}}"></view>
+                    </view><text>{{ item.name }}</text>
+                </view>
+            </view>
+        </view>
     </view>
-  </view>
 </pop-up>

@@ -1,133 +1,195 @@
 @import "/utils/iconfont.wxss";
+
 /* 轮播图 */
+
 .banner-bg {
-  width: 100%;
-  height: 230rpx;
-  border-radius: 0 0 40rpx 40rpx;
+    width: 100%;
+    height: 230rpx;
+    border-radius: 0 0 40rpx 40rpx;
 }
 
 .banner {
-  width: 100%;
-  height: 450rpx;
-  overflow: hidden;
+    width: 100%;
+    height: 450rpx;
+    overflow: hidden;
 }
-.slide-image{
-  width: 100%;
-  height: 100%;
+
+.slide-image {
+    width: 100%;
+    height: 100%;
 }
-/* tab栏*/
-.tab_box{
-  width: 100%;
-  box-sizing: border-box;
-  padding: 12rpx 184rpx;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+
+
+/* 点餐栏*/
+
+.order_box {
+    width: 552rpx;
+    height: 88rpx;
+    margin: 30rpx auto;
+    border-radius: 50rpx;
+    box-shadow: 0 2px 10px #ff9a51;
+    background: #fd7e23;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.tab_img{
-  width:86rpx;
-  height: 86rpx;
-  display: block;
-  border-radius: 50%;
-  margin-bottom: 8rpx;
-  background: rosybrown;
+
+.order_img {
+    width: 55rpx;
+    height: 55rpx;
+    display: block;
+    margin-right: 10rpx;
 }
-.tab_tit{
-  font-size: 24rpx;
-  color: #010101;
-  text-align: center;
+
+.order_text>view {
+    line-height: 1;
+    color: #fff;
 }
-/* 描述 */
-.del_img{
-  width: 100%;
-  height: 404rpx;
-  display: block;
-  background: rosybrown;
+
+.order_text>view:nth-child(1) {
+    font-size: 32rpx;
+    font-weight: bold;
 }
+
+.order_text>view:nth-child(2) {
+    font-size: 24rpx;
+}
+
+
+/* 描述多图 */
+
+.del {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.del_item {
+    width: 340rpx;
+    margin-left: 24rpx;
+}
+
+.del_img {
+    width: 100%;
+    height: 248rpx;
+    display: block;
+    background: rosybrown;
+    border-radius: 20rpx;
+    box-shadow: 0 2px 10px #d7d7d7;
+}
+
+.del_title {
+    width: 100%;
+    font-size: 32rpx;
+    text-align: center;
+    margin: 20rpx 0 30rpx 0;
+    color: #383539;
+}
+
+
 /* 联系电话*/
-.relation{
-  padding: 20rpx 192rpx 40rpx 192rpx;
-  font-size: 28rpx;
+
+.relation {
+    padding: 20rpx 192rpx 40rpx 192rpx;
+    font-size: 28rpx;
 }
-.icondianhua{
-  font-size: 28rpx;
-  color: #B0ACAA;
+
+.icondianhua {
+    font-size: 28rpx;
+    color: #B0ACAA;
 }
-.phone{
-  color: #B0ACAA;
+
+.phone {
+    color: #B0ACAA;
 }
-.phone_num{
-  color: #F48E26;
+
+.phone_num {
+    color: #F48E26;
 }
+
+
 /* 注册 */
-.del_box{
-  margin-top: 40rpx;
+
+.del_box {
+    margin-top: 40rpx;
 }
-.register_item{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+
+.register_item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.name{
-  font-size: 24rpx;
-  color: #202020;
-  font-weight: bold;
-  margin-left: 22rpx;
+
+.name {
+    font-size: 24rpx;
+    color: #202020;
+    font-weight: bold;
+    margin-left: 22rpx;
 }
-.input{
-  width: 444rpx;
-  padding: 30rpx 0;
-  border-bottom: solid #F7F7F7 .5rpx;
+
+.input {
+    width: 444rpx;
+    padding: 30rpx 0;
+    border-bottom: solid #F7F7F7 .5rpx;
 }
-.last_i{
-  width: 444rpx;
-  padding: 30rpx 0;
-  font-size: 24rpx;
+
+.last_i {
+    width: 444rpx;
+    padding: 30rpx 0;
+    font-size: 24rpx;
 }
-.last_i:last-child{
-  display: flex;
-  align-items: center;
+
+.last_i:last-child {
+    display: flex;
+    align-items: center;
 }
-input{
-  font-size: 24rpx;
-  line-height: 1;
+
+input {
+    font-size: 24rpx;
+    line-height: 1;
 }
-.inp_pla{
-  color: #D1D1D1;
+
+.inp_pla {
+    color: #D1D1D1;
 }
-.section{
-  color: #D1D1D1;
+
+.section {
+    color: #D1D1D1;
 }
-.picker{
-  color: #202020;
+
+.picker {
+    color: #202020;
 }
-.iconxiangxiajiantoushixin{
-  font-size: 18rpx;
-  display: inline-block;
-  margin-left: 10rpx;
+
+.iconxiangxiajiantoushixin {
+    font-size: 18rpx;
+    display: inline-block;
+    margin-left: 10rpx;
 }
-.ethnic{
-  display: flex;
-  align-items: center;
-  margin-right: 40rpx;
+
+.ethnic {
+    display: flex;
+    align-items: center;
+    margin-right: 40rpx;
 }
-.ethnic_check{
-  width: 24rpx;
-  height: 24rpx;
-  box-sizing: border-box;
-  border-radius: 50%;
-  border: solid .5rpx #E1E1E1;
-  margin-right: 10rpx;
-  position: relative;
+
+.ethnic_check {
+    width: 24rpx;
+    height: 24rpx;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: solid .5rpx #E1E1E1;
+    margin-right: 10rpx;
+    position: relative;
 }
-.ethnic_checkout{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -6rpx;
-  margin-top: -6rpx;
-  width: 12rpx;
-  height: 12rpx;
-  border-radius: 50%;
+
+.ethnic_checkout {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -6rpx;
+    margin-top: -6rpx;
+    width: 12rpx;
+    height: 12rpx;
+    border-radius: 50%;
 }

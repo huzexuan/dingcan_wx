@@ -1,40 +1,53 @@
 <wxs module="order_pice">
-    function order_pice(res) {
-      var pice = res / 100
-      pice = pice.toFixed(2)
-      return pice
+    function order_pice(res) { 
+        var pice = res / 100 
+        pice = pice.toFixed(2) 
+        return pice 
     }
     module.exports.order_pice = order_pice
-  </wxs>
-<view class="box_title"> 
+</wxs>
+<view class="tab_type">
+    <view class="tab_btn {{select_tabid == item.id ?'select_tabBtn':''}}" bindtap="tab_btn" data-id="{{ item.id }}" wx:for="{{ tab }}" wx:key="this">
+        <image src="{{ item.icon }}" class="tab_icon"/>
+        {{ item.title }}
+    </view>
+</view>
+<view class="muslim" wx:if="{{ select_tabid == 2 }}">
+    <view class="muslim_item {{ select_muslimId == item.id ?'select_muslimTab':''}}" bindtap="muslim_tab" data-id="{{ item.id }}" wx:for="{{ muslim }}" wx:key="this">
+        <view class="muslim_radio">
+            <view></view>
+        </view>
+        {{item.title}}
+    </view>
+</view>
+<view class="box_title">
     <view>工作餐</view>
     <view bind:tap="overtime">申请加班餐</view>
 </view>
 <view class="at_food" wx:for="{{ list }}" wx:key='this' wx:if="{{ item.is_selected == 1 }}">
-    <view>当前可定餐（点击下单订餐）</view>
     <view>{{ item.lunch }}</view>
 </view>
-<view class="box_title"> 
+<view class="box_title">
     <view>每日用餐列表</view>
 </view>
 <view class="table">
     <view class="tr bg-w">
-      <view class="th">日期</view>
-      <view class="th">午餐</view>
-      <view class="th ">晚餐</view>
+        <view class="th">日期</view>
+        <view class="th">午餐</view>
+        <view class="th ">晚餐</view>
     </view>
     <block wx:for="{{list}}" wx:key="this">
-      <view class="tr   {{ item.is_selected == 1?'is_selected':'' }}"  >
-        <view class="td">{{item.week}}</view>
-        <view class="td">
-            <view class="food {{ item.lunch.length<13 ?'text_lunchline':''}}">{{item.lunch}}</view>
+        <view class="tr   {{ item.is_selected == 1?'is_selected':'' }}">
+            <view class="td">{{item.week}}</view>
+            <view class="td">
+                <view class="food {{ item.lunch.length<13 ?'text_lunchline':''}}">{{item.lunch}}</view>
+            </view>
+            <view class="td">
+                <view class="food {{item.dinner.length<13?'text_dinnerline':''}}">{{item.dinner}}</view>
+            </view>
         </view>
-        <view class="td">
-            <view class="food {{item.dinner.length<13?'text_dinnerline':''}}" >{{item.dinner}}</view>
-        </view>
-    </view>
     </block>
-  </view>
+</view>
 <view class="shop">
     <image src="/img/shopping.png" class="shop_img"></image>
     <view class="order">
@@ -46,22 +59,26 @@
     </view>
 </view>
 <!-- 预定午餐 -->
-<pop-up show="{{ pop_show }}" textarea="{{ true }}" title="预定午餐" btn_text="付款并订餐" bind:change="purchase" data-type="1" bind:areas="lunch_areas" >
+<pop-up show="{{ pop_show }}" textarea="{{ true }}" title="预定午餐" btn_text="付款并订餐" bind:change="purchase" data-type="1" bind:areas="lunch_areas">
     <view class="item">
-        <view>订餐名称</view><view class="name"wx:for="{{ list }}" wx:key='this' wx:if="{{ item.is_selected == 1 }}">{{ item.lunch }}</view>
+        <view>订餐名称</view>
+        <view class="name" wx:for="{{ list }}" wx:key='this' wx:if="{{ item.is_selected == 1 }}">{{ item.lunch }}</view>
     </view>
     <view class="item">
-        <view>实际付款</view><view class="pice">¥{{ auth == 3?0:order_pice.order_pice(food_money) }}</view>
+        <view>实际付款</view>
+        <view class="pice">¥{{ auth == 3?0:order_pice.order_pice(food_money) }}</view>
     </view>
     <!-- <textarea class="areas" placeholder='输入您的备注信息' placeholder-class="areas_placeholder"  />  -->
 </pop-up>
 <!-- 加班餐 -->
 <pop-up show="{{ overtime_pop_show }}" textarea="{{ true }}" title="申请加班餐" btn_text="提交申请" bind:change="purchase" data-type="2" bind:areas="dinner_areas">
     <view class="item">
-        <view>订餐名称</view><view class="name" wx:for="{{ list }}" wx:key='this' wx:if="{{ item.is_selected == 1 }}">{{ item.dinner }}</view>
+        <view>订餐名称</view>
+        <view class="name" wx:for="{{ list }}" wx:key='this' wx:if="{{ item.is_selected == 1 }}">{{ item.dinner }}</view>
     </view>
     <view class="item">
-        <view>实际付款</view><view class="pice">¥{{auth == 3?0:order_pice.order_pice(food_money) }}</view>
+        <view>实际付款</view>
+        <view class="pice">¥{{auth == 3?0:order_pice.order_pice(food_money) }}</view>
     </view>
     <!-- <textarea class="areas" placeholder='输入您的备注信息' placeholder-class="areas_placeholder" > 
     </textarea> -->
