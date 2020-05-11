@@ -2,24 +2,24 @@ const App = getApp()
 Page({
     data: {
         food_money: 0,
-        tab:[{
-            title:"员工餐",
-            icon:'/img/order_img.png',
-            id:1
-        },{
-            title:"回族餐",
-            icon:'/img/muslim.png',
-            id:2
+        tab: [{
+            title: "员工餐",
+            icon: '/img/order_img.png',
+            id: 1
+        }, {
+            title: "回族餐",
+            icon: '/img/muslim.png',
+            id: 2
         }],
-        muslim:[{
-            id:1,
-            title:'用餐'
-        },{
-            id:2,
-            title:'领物品'
+        muslim: [{
+            id: 1,
+            title: '用餐'
+        }, {
+            id: 2,
+            title: '领物品'
         }],
-        select_tabid:1,
-        select_muslimId:1
+        select_tabid: 1,
+        select_muslimId: 0
     },
     onLoad(options) {
         this.setData(options)
@@ -33,7 +33,7 @@ Page({
         })
 
     },
-    orderList(){
+    orderList() {
         let _this = this
         App._get('v1_0_0.food/index', {
             user_id: wx.getStorageSync('user_id'),
@@ -60,6 +60,18 @@ Page({
     },
     dinner_areas(e) {
         this.setData({ dinner_remark: e.detail.detail.value })
+    },
+    submit(){
+        let _this = this
+        wx.showModal({
+            title: '温馨提示',
+            confirmText: '确定',
+            cancelText: '取消',
+            content: '请先选择用餐或领物品',
+            success: function (res) {
+                
+            }
+        })
     },
     // 申请加班餐
     purchase(e) {
@@ -103,20 +115,37 @@ Page({
             }
         })
     },
-    tab_btn(e){
+    tab_btn(e) {
         let _this = this
         _this.setData({
-            select_tabid:e.currentTarget.dataset.id
-        },res=>{
+            select_tabid: e.currentTarget.dataset.id,
+            select_muslimId:0,
+            overtime_pop_show: false
+        }, res => {
             _this.orderList()
         })
     },
-    muslim_tab(e){
+    muslim_tab(e) {
         let _this = this
         _this.setData({
-            select_muslimId:e.currentTarget.dataset.id
-        },res=>{
-            
+            select_muslimId: e.currentTarget.dataset.id
+        }, res => {
+            wx.showModal({
+                title: `当前选择${_this.data.select_muslimId == 1?'用餐':'领物品'}`,
+                confirmText: '确定',
+                cancelText: '取消',
+                content: '此选项一个月只能选择一次，是否确定？',
+                success: function (res) {
+                    if(res.confirm){
+
+                    }
+                    if(res.cancel){
+                        _this.setData({
+                            select_muslimId:0
+                        })
+                    }
+                }
+            })
         })
     }
 })

@@ -20,6 +20,19 @@ Page({
             name: '回族',
             id: 2
         }],
+        delList:[{
+            src:"/img/purchase.jpg",
+            title:'采购'
+        },{
+            src:"/img/make.jpg",
+            title:'制作'
+        },{
+            src:"/img/disinfect.jpg",
+            title:'消毒'
+        },{
+            src:"/img/distribution.jpg",
+            title:'配送'
+        }]
     },
     onLoad() {
         let _this = this

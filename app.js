@@ -22,7 +22,6 @@ App({
     this.setApiRoot();
     // 小程序主动更新
     this.updateManager();
-    console.log('.')
   },
   /**
    * 当小程序启动，或从后台进入前台显示，会触发 onShow

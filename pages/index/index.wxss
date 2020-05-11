@@ -25,7 +25,7 @@
 .order_box {
     width: 552rpx;
     height: 88rpx;
-    margin: 30rpx auto;
+    margin:30rpx auto 40rpx;
     border-radius: 50rpx;
     box-shadow: 0 2px 10px #ff9a51;
     background: #fd7e23;

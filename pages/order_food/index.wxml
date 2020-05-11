@@ -4,12 +4,11 @@
         pice = pice.toFixed(2) 
         return pice 
     }
-    module.exports.order_pice = order_pice
+     module.exports.order_pice = order_pice
 </wxs>
 <view class="tab_type">
     <view class="tab_btn {{select_tabid == item.id ?'select_tabBtn':''}}" bindtap="tab_btn" data-id="{{ item.id }}" wx:for="{{ tab }}" wx:key="this">
-        <image src="{{ item.icon }}" class="tab_icon"/>
-        {{ item.title }}
+        <image src="{{ item.icon }}" class="tab_icon" /> {{ item.title }}
     </view>
 </view>
 <view class="muslim" wx:if="{{ select_tabid == 2 }}">
@@ -20,9 +19,10 @@
         {{item.title}}
     </view>
 </view>
+<block wx:if="{{ select_muslimId !== 2 }}">
 <view class="box_title">
     <view>工作餐</view>
-    <view bind:tap="overtime">申请加班餐</view>
+    <view bind:tap="{{ select_tabid == 1 ?'overtime':'submit'}}">申请加班餐</view>
 </view>
 <view class="at_food" wx:for="{{ list }}" wx:key='this' wx:if="{{ item.is_selected == 1 }}">
     <view>{{ item.lunch }}</view>
@@ -52,10 +52,20 @@
     <image src="/img/shopping.png" class="shop_img"></image>
     <view class="order">
         <view class="order_pice">合计: <text>￥{{auth == 3?0:order_pice.order_pice(food_money)}}</text></view>
-        <view class="submit_order" bind:tap="submit_order">
+        <view class="submit_order" bind:tap="submit_order" wx:if="{{ select_tabid == 1 }}">
             <view>去下单</view>
             <view>{{ start_time }}-{{ end_time }}可下单</view>
         </view>
+        <block wx:else>
+            <!-- <view class="submit_order" bind:tap="submit_order" wx:if="{{ select_tabid == 1 }}">
+                <view>去下单</view>
+                <view>{{ start_time }}-{{ end_time }}可下单</view>
+            </view> -->
+            <view class="submit_order" style="background: #bdbdbd;" bindtap="submit">
+                <view>去下单</view>
+                <view>{{ start_time }}-{{ end_time }}可下单</view>
+            </view>
+        </block>
     </view>
 </view>
 <!-- 预定午餐 -->
@@ -68,7 +78,6 @@
         <view>实际付款</view>
         <view class="pice">¥{{ auth == 3?0:order_pice.order_pice(food_money) }}</view>
     </view>
-    <!-- <textarea class="areas" placeholder='输入您的备注信息' placeholder-class="areas_placeholder"  />  -->
 </pop-up>
 <!-- 加班餐 -->
 <pop-up show="{{ overtime_pop_show }}" textarea="{{ true }}" title="申请加班餐" btn_text="提交申请" bind:change="purchase" data-type="2" bind:areas="dinner_areas">
@@ -80,6 +89,5 @@
         <view>实际付款</view>
         <view class="pice">¥{{auth == 3?0:order_pice.order_pice(food_money) }}</view>
     </view>
-    <!-- <textarea class="areas" placeholder='输入您的备注信息' placeholder-class="areas_placeholder" > 
-    </textarea> -->
 </pop-up>
+</block>
