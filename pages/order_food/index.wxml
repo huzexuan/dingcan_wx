@@ -11,18 +11,28 @@
         <image src="{{ item.icon }}" class="tab_icon" /> {{ item.title }}
     </view>
 </view>
-<view class="muslim" wx:if="{{ select_tabid == 2 }}">
-    <view class="muslim_item {{ select_muslimId == item.id ?'select_muslimTab':''}}" bindtap="muslim_tab" data-id="{{ item.id }}" wx:for="{{ muslim }}" wx:key="this">
-        <view class="muslim_radio">
-            <view></view>
+<view class="muslim" wx:if="{{ select_tabid == 2 && nation == 2}}">
+    <block wx:if="{{ is_checked == 0 }}">
+        <view class="muslim_item {{ select_muslimId == item.id ?'select_muslimTab':''}}" bindtap="muslim_tab" data-id="{{ item.id }}" wx:for="{{ muslim }}" wx:key="this">
+            <view class="muslim_radio">
+                <view></view>
+            </view>
+            {{item.title}}
         </view>
-        {{item.title}}
-    </view>
+    </block>
+    <block wx:else>
+        <view class="muslim_item {{ select_muslimId  == item.id ?'select_muslimTab':''}}" bindtap="as_muslim" wx:for="{{ muslim }}" wx:key="this">
+            <view class="muslim_radio">
+                <view></view>
+            </view>
+            {{item.title }}
+        </view>
+    </block>
 </view>
-<block wx:if="{{ select_muslimId !== 2 }}">
 <view class="box_title">
     <view>工作餐</view>
-    <view bind:tap="{{ select_tabid == 1 ?'overtime':'submit'}}">申请加班餐</view>
+    <view bind:tap="{{select_tabid == 2 && select_muslimId == 1?'overtime':'submit'}}" wx:if="{{select_tabid == 2 && nation == 2 && select_muslimId !== 2 }}">申请加班餐</view>
+    <view bind:tap="overtime" wx:if="{{ select_tabid == 1 && nation == 1}}">申请加班餐</view>
 </view>
 <view class="at_food" wx:for="{{ list }}" wx:key='this' wx:if="{{ item.is_selected == 1 }}">
     <view>{{ item.lunch }}</view>
@@ -48,26 +58,31 @@
         </view>
     </block>
 </view>
-<view class="shop">
+<view class="shop" wx:if="{{ select_tabid == 1 && nation == 1}}">
     <image src="/img/shopping.png" class="shop_img"></image>
     <view class="order">
         <view class="order_pice">合计: <text>￥{{auth == 3?0:order_pice.order_pice(food_money)}}</text></view>
-        <view class="submit_order" bind:tap="submit_order" wx:if="{{ select_tabid == 1 }}">
+        <view class="submit_order" bind:tap="submit_order">
             <view>去下单</view>
             <view>{{ start_time }}-{{ end_time }}可下单</view>
         </view>
-        <block wx:else>
-            <!-- <view class="submit_order" bind:tap="submit_order" wx:if="{{ select_tabid == 1 }}">
-                <view>去下单</view>
-                <view>{{ start_time }}-{{ end_time }}可下单</view>
-            </view> -->
-            <view class="submit_order" style="background: #bdbdbd;" bindtap="submit">
-                <view>去下单</view>
-                <view>{{ start_time }}-{{ end_time }}可下单</view>
-            </view>
-        </block>
     </view>
 </view>
+<view class="shop" wx:if="{{select_tabid == 2 &&  nation == 2  &&select_muslimId !== 2 }}">
+    <image src="/img/shopping.png" class="shop_img"></image>
+    <view class="order">
+        <view class="order_pice">合计: <text>￥{{auth == 3?0:order_pice.order_pice(food_money)}}</text></view>
+        <view class="submit_order" bind:tap="submit_order" wx:if="{{ select_muslimId == 1 }}">
+            <view>去下单</view>
+            <view>{{ start_time }}-{{ end_time }}可下单</view>
+        </view>
+        <view class="submit_order" style="background: #bdbdbd;" wx:else bindtap="submit">
+            <view>去下单</view>
+            <view>{{ start_time }}-{{ end_time }}可下单</view>
+        </view>
+    </view>
+</view>
+<view class="is_height"></view>
 <!-- 预定午餐 -->
 <pop-up show="{{ pop_show }}" textarea="{{ true }}" title="预定午餐" btn_text="付款并订餐" bind:change="purchase" data-type="1" bind:areas="lunch_areas">
     <view class="item">
@@ -90,4 +105,3 @@
         <view class="pice">¥{{auth == 3?0:order_pice.order_pice(food_money) }}</view>
     </view>
 </pop-up>
-</block>

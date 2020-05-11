@@ -20,19 +20,6 @@ Page({
             name: '回族',
             id: 2
         }],
-        delList:[{
-            src:"/img/purchase.jpg",
-            title:'采购'
-        },{
-            src:"/img/make.jpg",
-            title:'制作'
-        },{
-            src:"/img/disinfect.jpg",
-            title:'消毒'
-        },{
-            src:"/img/distribution.jpg",
-            title:'配送'
-        }]
     },
     onLoad() {
         let _this = this
@@ -76,9 +63,13 @@ Page({
                             })
                             wx.setStorageSync('user_id', res.data.user_id)
                             wx.setStorageSync('user_token', res.data.user_token)
+                            wx.setStorageSync('nation', res.data.nation) //1 汉族 2回族
+                            wx.setStorageSync('is_checked', res.data.is_checked) //1 用餐 2领物品
                         } else {
                             wx.removeStorageSync('user_id')
                             wx.removeStorageSync('user_token')
+                            wx.removeStorageSync('is_checked')
+                            wx.removeStorageSync('nation')
                             _this.setData({
                                 openid: res.data.openid
                             })
@@ -129,6 +120,8 @@ Page({
                 })
                 wx.setStorageSync('user_id', res.data.user_id)
                 wx.setStorageSync('user_token', res.data.user_token)
+                wx.setStorageSync('nation', res.data.nation) //1 汉族 2回族
+                wx.setStorageSync('is_checked', res.data.is_checked) //1用餐 2领物品
             }
         })
     },

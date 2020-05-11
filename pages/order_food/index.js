@@ -19,7 +19,6 @@ Page({
             title: '领物品'
         }],
         select_tabid: 1,
-        select_muslimId: 0
     },
     onLoad(options) {
         this.setData(options)
@@ -28,6 +27,11 @@ Page({
         let _this = this
         App.up_courierPage()
         _this.orderList()
+        _this.setData({
+            select_muslimId: wx.getStorageSync('is_checked'),
+            is_checked: wx.getStorageSync('is_checked'),
+            nation: wx.getStorageSync('nation')
+        })
         App._get('v1_0_0.user/index', {}, res => {
             _this.setData(res.data)
         })
@@ -61,15 +65,15 @@ Page({
     dinner_areas(e) {
         this.setData({ dinner_remark: e.detail.detail.value })
     },
-    submit(){
+    submit() {
         let _this = this
         wx.showModal({
             title: '温馨提示',
             confirmText: '确定',
             cancelText: '取消',
             content: '请先选择用餐或领物品',
-            success: function (res) {
-                
+            success: function(res) {
+
             }
         })
     },
@@ -119,7 +123,7 @@ Page({
         let _this = this
         _this.setData({
             select_tabid: e.currentTarget.dataset.id,
-            select_muslimId:0,
+            select_muslimId: wx.getStorageSync('is_checked'),
             overtime_pop_show: false
         }, res => {
             _this.orderList()
@@ -135,17 +139,26 @@ Page({
                 confirmText: '确定',
                 cancelText: '取消',
                 content: '此选项一个月只能选择一次，是否确定？',
-                success: function (res) {
-                    if(res.confirm){
-
+                success: function(res) {
+                    if (res.confirm) {
+                        App._get('v1_0_0.food/save_user_subsidy', {
+                            user_id: wx.getStorageSync('user_id'),
+                            type: _this.data.select_muslimId
+                        }, res => {
+                            wx.setStorageSync('is_checked', _this.data.select_muslimId) //1 用餐 2领物品
+                            _this.onShow()
+                        })
                     }
-                    if(res.cancel){
+                    if (res.cancel) {
                         _this.setData({
-                            select_muslimId:0
+                            select_muslimId: 0
                         })
                     }
                 }
             })
         })
+    },
+    as_muslim(){
+        App.popToast('已经选择，不可更换')
     }
 })

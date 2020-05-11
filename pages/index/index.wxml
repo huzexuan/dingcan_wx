@@ -24,9 +24,9 @@
     </view>
 </block>
 <view class="del">
-    <view class="del_item" wx:for="{{ delList }}" wx:key='this'>
-        <image class="del_img" src="{{ item.src }}" />
-        <view class="del_title">{{item.title}}</view>
+    <view class="del_item" wx:for="{{ lc }}" wx:key='this'>
+        <image class="del_img" src="{{ item.img_url }}" />
+        <view class="del_title">{{item.remark}}</view>
     </view>
 </view>
 <view class="relation">
