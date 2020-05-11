@@ -26,6 +26,7 @@
     overflow: hidden;
     text-overflow:ellipsis;
     white-space: nowrap;
+    z-index: 111111;
 }
 .order_determined{
     padding: 28rpx 0;
@@ -61,7 +62,7 @@
     width: 194rpx;
     height: 156rpx;
     position: absolute;
-    top: 15rpx;
+    bottom: -12rpx;
     right: 26rpx;
 }
 .order_operation{

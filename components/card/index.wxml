@@ -86,7 +86,7 @@
                 <view>¥{{order_pice.order_pice(item.fee)}}</view>
               </view>
             </block>
-              <image class="type_img" wx:if="{{ item.order_type_status != 0 && !card_type_examine && item.order_type == 2}}" src="{{order_typeImg.order_typeImg(item.order_type_status)}}"></image>
+              <image class="type_img" wx:if="{{ item.order_type_status != 0  && item.order_type == 2}}" src="{{order_typeImg.order_typeImg(card_type_examine && item.order_type_status == 1? ' ':item.order_type_status)}}"></image>
           </view>
       </view>
       <view class="order_operation" >

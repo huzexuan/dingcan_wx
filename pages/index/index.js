@@ -185,5 +185,12 @@ Page({
     _this.setData({
       ethnicOutid:e.currentTarget.id
     })
-  }
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '点击卡片立即订餐~',
+      path: '/pages/index/index' ,
+      imageUrl: '/img/share_img.jpg'
+    }
+  },
 })
