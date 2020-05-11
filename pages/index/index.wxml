@@ -8,6 +8,6 @@
 </view>
 <view class="header">
     <view class="header_tab" wx:for="{{ tab }}" wx:key='this'>
-        <image src="{{ item.icon }}" alt="" /> 嘉诚餐饮
+        <image src="{{ item.icon }}" /> {{item.title}}
     </view>
 </view>
