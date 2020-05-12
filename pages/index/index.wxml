@@ -7,9 +7,9 @@
     </view>
 </view>
 <view class="header">
-    <view class="header_tab" wx:for="{{ tab }}" wx:key='this'>
+    <navigator hover-class='none' url="{{ item.url }}" class="header_tab" wx:for="{{ tab }}" wx:key='this'>
         <image src="{{ item.icon }}" /> {{item.title}}
-    </view>
+    </navigator>
 </view>
 <swiper class="banner" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color='#DDDDDD' indicator-active-color='#333333' circular='{{circular}}'>
     <swiper-item wx:for="{{banner}}" wx:key='item'>

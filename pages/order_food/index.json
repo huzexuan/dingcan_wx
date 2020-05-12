@@ -1,5 +1,5 @@
 {
     "usingComponents": {
-      "pop-up": "/components/pop-up/index"
-  }
+        "pop-up": "/components/pop-up/index"
+    }
 }

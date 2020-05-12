@@ -5,26 +5,11 @@ const App = getApp()
 Page({
     data: {
         // banner
-        banner: ["/img/banner1.jpg", "/img/banner2.jpg"],
         indicatorDots: true,
         autoplay: true,
         interval: 5000,
         duration: 1000,
         circular: true,
-        // tab
-        tab: [{
-            title: '单位订餐',
-            icon: '/img/unit.png',
-            url: '/pages/reservation/index'
-        }, {
-            title: '楼下集合',
-            icon: '/img/gather.png',
-            url: '/pages/order_food/index?type=2'
-        }, {
-            title: '瓜果蔬菜',
-            icon: '/img/melon.png',
-            url: '/pages/order_food/index?type=2'
-        }],
         phone: '15032266556',
         index: 0,
         ethnicOutid: 1,
@@ -38,9 +23,9 @@ Page({
     },
     onLoad() {
         let _this = this
-            // App._get('v1_0_0.home/index', {}, res => {
-            //     _this.setData(res.data)
-            // })
+        App._get('v1_0_0.home/index', {}, res => {
+            _this.setData(res.data)
+        })
     },
     // 弹框
     register_pop() {
@@ -57,38 +42,42 @@ Page({
 
     },
     onShow() {
-        // let _this = this
-        // _this.setData({
-        //     user_id: wx.getStorageSync('user_id'),
-        //     user_token: wx.getStorageSync('user_token')
-        // })
-        // App.up_courierPage()
-        //     // 微信Code获取
-        // wx.login({
-        //     success: res => {
-        //         _this.setData({
-        //             wxCode: res.code
-        //         }, () => {
-        //             App._get('v1_0_0.register/is_login', { code: _this.data.wxCode }, res => {
-        //                 if (res.code == 200) {
-        //                     _this.setData({
-        //                         pop_show: false,
-        //                         user_id: res.data.user_id,
-        //                         user_token: res.data.user_token,
-        //                     })
-        //                     wx.setStorageSync('user_id', res.data.user_id)
-        //                     wx.setStorageSync('user_token', res.data.user_token)
-        //                 } else {
-        //                     wx.removeStorageSync('user_id')
-        //                     wx.removeStorageSync('user_token')
-        //                     _this.setData({
-        //                         openid: res.data.openid
-        //                     })
-        //                 }
-        //             })
-        //         })
-        //     }
-        // })
+        let _this = this
+        _this.setData({
+            user_id: wx.getStorageSync('user_id'),
+            user_token: wx.getStorageSync('user_token')
+        })
+        App.up_courierPage()
+            // 微信Code获取
+        wx.login({
+            success: res => {
+                _this.setData({
+                    wxCode: res.code
+                }, () => {
+                    App._get('v1_0_0.register/is_login', { code: _this.data.wxCode }, res => {
+                        if (res.code == 200) {
+                            _this.setData({
+                                pop_show: false,
+                                user_id: res.data.user_id,
+                                user_token: res.data.user_token,
+                            })
+                            wx.setStorageSync('user_id', res.data.user_id)
+                            wx.setStorageSync('user_token', res.data.user_token)
+                            wx.setStorageSync('nation', res.data.nation) //1 汉族 2回族
+                            wx.setStorageSync('is_checked', res.data.is_checked) //1 用餐 2领物品
+                        } else {
+                            wx.removeStorageSync('user_id')
+                            wx.removeStorageSync('user_token')
+                            wx.removeStorageSync('is_checked')
+                            wx.removeStorageSync('nation')
+                            _this.setData({
+                                openid: res.data.openid
+                            })
+                        }
+                    })
+                })
+            }
+        })
 
     },
     //注册
@@ -131,6 +120,8 @@ Page({
                 })
                 wx.setStorageSync('user_id', res.data.user_id)
                 wx.setStorageSync('user_token', res.data.user_token)
+                wx.setStorageSync('nation', res.data.nation) //1 汉族 2回族
+                wx.setStorageSync('is_checked', res.data.is_checked) //1用餐 2领物品
             }
         })
     },
